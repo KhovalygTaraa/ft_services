@@ -1,0 +1,135 @@
+{
+	"annotations": {
+	  "list": [
+		{
+		  "builtIn": 1,
+		  "datasource": "-- Grafana --",
+		  "enable": true,
+		  "hide": true,
+		  "iconColor": "rgba(0, 211, 255, 1)",
+		  "name": "Annotations & Alerts",
+		  "type": "dashboard"
+		}
+	  ]
+	},
+	"editable": true,
+	"gnetId": null,
+	"graphTooltip": 0,
+	"id": 4,
+	"links": [],
+	"panels": [
+	  {
+		"datasource": "InfluxDB_v1",
+		"fieldConfig": {
+		  "defaults": {
+			"custom": {
+			  "align": null,
+			  "filterable": false
+			},
+			"displayName": "Memory Usage",
+			"mappings": [],
+			"max": 1000000,
+			"min": 0,
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "blue",
+				  "value": null
+				},
+				{
+				  "color": "semi-dark-green",
+				  "value": 80
+				}
+			  ]
+			}
+		  },
+		  "overrides": []
+		},
+		"gridPos": {
+		  "h": 9,
+		  "w": 12,
+		  "x": 0,
+		  "y": 0
+		},
+		"id": 2,
+		"options": {
+		  "orientation": "auto",
+		  "reduceOptions": {
+			"calcs": [
+			  "mean"
+			],
+			"fields": "",
+			"values": false
+		  },
+		  "showThresholdLabels": false,
+		  "showThresholdMarkers": true
+		},
+		"pluginVersion": "7.3.5",
+		"targets": [
+		  {
+			"groupBy": [
+			  {
+				"params": [
+				  "$__interval"
+				],
+				"type": "time"
+			  },
+			  {
+				"params": [
+				  "null"
+				],
+				"type": "fill"
+			  }
+			],
+			"measurement": "docker_container_mem",
+			"orderByTime": "ASC",
+			"policy": "default",
+			"queryType": "randomWalk",
+			"refId": "A",
+			"resultFormat": "time_series",
+			"select": [
+			  [
+				{
+				  "params": [
+					"usage"
+				  ],
+				  "type": "field"
+				},
+				{
+				  "params": [],
+				  "type": "mean"
+				}
+			  ]
+			],
+			"tags": [
+			  {
+				"key": "app",
+				"operator": "=",
+				"value": "influxdb"
+			  }
+			]
+		  }
+		],
+		"timeFrom": null,
+		"timeShift": null,
+		"title": "InfluxDB",
+		"type": "gauge"
+	  }
+	],
+	"schemaVersion": 26,
+	"style": "dark",
+	"tags": [],
+	"templating": {
+	  "list": []
+	},
+	"time": {
+	  "from": "now-6h",
+	  "to": "now"
+	},
+	"timepicker": {},
+	"timezone": "",
+	"title": "influxdb",
+	"uid": "M_4dtR-Gk",
+	"version": 2
+  }
